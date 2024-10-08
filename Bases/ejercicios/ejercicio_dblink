@@ -1,0 +1,22 @@
+create table TABLAB (clave integer, valor varchar(255));
+
+create database link LNK_DE_B_a_A
+    connect to dblinka
+    identified by ruben123
+    using '10.1.1.17/XE';
+    
+    
+select * from TABLAA@LNK_DE_B_a_A;
+
+create or replace synonym ruben for TABLAA@LNK_DE_B_a_A;
+
+select * from ruben;
+
+
+create view tablatotal as (
+    SELECT 'Ethan' as usuario,clave,valor FROM ETHAN
+        union
+    select 'Rubén' as usuario,clave,valor from tablaa
+);
+
+

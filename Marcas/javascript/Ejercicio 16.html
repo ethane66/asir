@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+var nombre = prompt("Ingresa el nombre del postulante:");
+var preguntasTotales = prompt("Ingresa la cantidad total de preguntas:");
+var preguntasCorrectas = prompt("Ingresa la cantidad de preguntas contestadas correctamente:");
+
+var porcentaje = (preguntasCorrectas / preguntasTotales) * 100;
+
+if (porcentaje >= 90) {
+  document.write(nombre + " tiene un nivel superior con un porcentaje de " + porcentaje + "%");
+} else if (porcentaje >= 75 && porcentaje < 90) {
+  document.write(nombre + " tiene un nivel medio con un porcentaje de " + porcentaje + "%");
+} else if (porcentaje >= 50 && porcentaje < 75) {
+  document.write(nombre + " tiene un nivel regular con un porcentaje de " + porcentaje + "%");
+} else {
+  document.write(nombre + " está fuera de nivel con un porcentaje de " + porcentaje + "%");
+}
+    </script>
+</body>
+</html>

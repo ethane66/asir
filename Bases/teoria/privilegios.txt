@@ -1,0 +1,39 @@
+--Privilegios RRHH--
+
+grant select,insert,update,delete on oficinas to RRHH;
+grant select,insert,update,delete on empleados to RRHH;
+grant select on clientes to RRHH;
+
+grant update(CodigoEmpleadoRepVentas)on clientes to RRHH;
+
+--Privilegios comercial--
+
+grant select,insert,update,delete on clientes to comercial;
+grant select,insert,update,delete on pedidos to comercial;
+grant select,insert,update,delete on detallepedidos to comercial;
+
+grant select on productos to comercial;
+grant select on empleados to comercial;
+grant select on oficinas to comercial;
+
+grant update(CantidadEnStock) on productos to comercial;
+
+--Privilegios contabilidad--
+
+grant select,insert,update,delete on pagos to contabilidad;
+
+grant select on clientes to contabilidad;
+grant select on pedidos to contabilidad;
+grant select on detallepedidos to contabilidad;
+
+--Privilegios almacen--
+
+grant select,insert,update,delete on productos to almacen;
+grant select,insert,update,delete on gamasproductos to almacen;
+
+create view DetallePedidosAlmacen as
+select CodigoPedido,Codigoproducto,cantidad from DetallePedidos;
+
+grant select on DetallePedidosAlmacen to almacen;
+
+commit;

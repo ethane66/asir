@@ -1,0 +1,5 @@
+<!ELEMENT recetas (receta*)>
+<!ELEMENT receta (ingrediente*)>
+<!ELEMENT ingrediente (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT precio (#PCDATA)>

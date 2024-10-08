@@ -1,0 +1,160 @@
+--1.1--
+select avg(numeric_grade) from grade;
+--1.2--
+select avg(final_grade) from enrollment;
+--1.3--
+select description from grade_type;
+--1.4--
+select avg(numeric_grade) from grade where grade_type_code like 'FI' ;
+--1.5--
+select count(student_id) from student;
+--1.6--
+select count(student_id) from student where salutation like 'Ms.';
+--1.7--
+select count(student_id) from student where salutation like 'Ms.' or salutation like 'Mr.';
+--1.8--
+select count(student_id) from student where salutation not in ('Ms.','Mr.');
+--1.9--
+select i.salutation,s.salutation
+from instructor i,student s,zipcode z
+where z.zip=s.zip and
+    z.zip=i.zip;
+    
+--1.11--
+select first_name,last_name from student where last_name like 'A%' or  last_name like 'a%';
+--1.12--
+select first_name from student where first_name like '____';
+--1.13--
+select 
+max(numeric_grade) from grade where section_id like 86;
+--1.14--
+select max(numeric_grade) from grade where student_id like 102;
+--1.15--
+select student_id from grade where numeric_grade=(select min(numeric_grade) from grade where section_id like 86)
+and section_id =86 ;
+--1.16--
+select course_no from course where prerequisite like 20;
+--1.17--
+select course_no from course where prerequisite in (20,130) or prerequisite is null and course_no not in (20,130);
+--1.18--
+select min(start_date_time) from section;
+--1.19--
+select min(start_date_time) from section where start_date_time like ('%/06/%');
+--1.20
+select max(start_date_time) from section;
+--1.21
+select * from section where start_date_time=(select max(start_date_time) from section);
+--1.22
+select distinct(start_date_time) from section order by start_date_time asc;
+--1.23
+select upper(last_name) from student order by last_name;
+--1.24
+select last_name,count(*) from student group by last_name order by 1;
+--1.25--
+select last_name,min(registration_date) from student group by last_name order by 1;
+--1.26--
+select count(distinct location) from section;
+--1.27--
+select section_id,count(location) from section group by section_id; 
+--1.48--
+CREATE OR REPLACE VIEW ZIPMULTIPLE AS
+select count(zip) as zipmultiple,state 
+from zipcode 
+group by state;
+
+select state,zipmultiple from ZIPMULTIPLE where zipmultiple > 1;
+
+--1.52--
+select count(section_id),course_no from section group by course_no;
+--1.53--
+select course_no from section group by course_no having count(course_no)=(select max(count(course_no)) from section group by course_no);
+
+--QUERYS CON DOS TABLAS--
+--1.9--
+with alumnos as(select distinct first_name from student order by 1)
+,profesores as(select distinct first_name from instructor order by 1 )
+select * from alumnos,profesores where alumnos.first_name = profesores.first_name;
+--1.8--
+with alumnos as(select distinct first_name from student order by 1)
+,profesores as(select distinct first_name from instructor order by 1 )
+select * from profesores where first_name not in( select * from alumnos);
+--1.14--
+select  i.first_name,i.last_name,s.course_no 
+from instructor i,section s 
+where i.instructor_id=s.instructor_id;
+--1.32. ¿En qué cursos está matriculada Ángela Torres?
+select distinct description from student 
+join enrollment on student.student_id = enrollment.student_id
+join section on enrollment.section_id = section.section_id
+join course on section.course_no = course.course_no
+where first_name=('Roger') and last_name=('Snow');
+--1.33. ¿En qué cursos no está matriculada Roger Snow?
+with esta_en as(
+select distinct description from student 
+join enrollment on student.student_id = enrollment.student_id
+join section on enrollment.section_id = section.section_id
+join course on section.course_no = course.course_no
+where first_name='Roger' and last_name='Snow'
+)
+
+select description from course where description not in(select * from esta_en);
+--1.44
+select sum(c.cost*count(e.student_id)) from enrollment e
+join section s on e.section_id = s.section_id
+join course c on s.course_no = c.course_no
+group by c.cost,c.course_no;
+--1.44.2
+select sum(c.cost*count(e.student_id)),nvl(TO_CHAR (cost),1000) from enrollment e
+join section s on e.section_id = s.section_id
+join course c on s.course_no = c.course_no
+group by c.cost,c.course_no;
+
+--1.3
+with orden_1 as(
+select ROW_NUMBER() OVER(ORDER BY last_name ASC) as orden ,salutation,last_name,first_name,state 
+from student s join zipcode z on s.zip=z.zip
+)
+select* from orden_1 where orden <=20;
+--1.4
+with orden_1 as(
+select ROW_NUMBER() OVER(ORDER BY last_name ASC) as orden ,salutation,last_name,first_name,state 
+from student s join zipcode z on s.zip=z.zip 
+)
+select * from orden_1 where orden>19 and orden<40;
+
+--1.5
+with orden_1 as(
+select ROW_NUMBER() OVER(ORDER BY last_name desc) as orden ,salutation,last_name,first_name,state 
+from student s join zipcode z on s.zip=z.zip 
+)
+select * from orden_1 where orden <=20 ORDER BY last_name ASC;
+
+
+
+
+
+
+
+
+
+---sacar fecha-----
+select to_date ('10-10-2005','DD-MM-YYYY') from dual;
+
+--cambiar formato de fecha en la sesion---
+alter session set NLS_DATE_FORMAT = 'DD/MM/YYYY';
+
+--sacar "trocitos" de fecha----
+select extract (year from start_date_time) from section;
+select extract (month from start_date_time)from section;
+select extract (day from start_date_time)from section;
+
+
+
+
+
+
+
+
+
+
+

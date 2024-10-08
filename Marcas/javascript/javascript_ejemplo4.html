@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var color = prompt('Ingrese el color con que se quiere pintar el fondo de la ventana (rojo, verde, azul)' ,'');
+        switch (color.toLowerCase()) {
+            case 'rojo': 
+                document.body.style.backgroundColor='#ff0000';
+                break;
+            case 'verde': 
+                document.body.style.backgroundColor ='#00ff00';
+                break;
+            case 'azul': 
+                document.body.style.backgroundColor ='#0000ff';
+                break;
+            default: 
+                document.body.style.backgroundColor = 'yellow';
+        }
+    </script> 
+</body>
+</html>
+

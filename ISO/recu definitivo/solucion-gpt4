@@ -1,0 +1,133 @@
+Ejercicio 1.
+
+    Crear las particiones primarias en el disco de 3 GB:
+    Primero, identifica el nombre del disco (por ejemplo, /dev/sdb) utilizando el comando lsblk o fdisk -l. A continuación, crea las particiones utilizando fdisk:
+
+bash
+
+Copy
+
+   sudo fdisk /dev/sdb
+
+Dentro de fdisk, sigue estos pasos para cada partición:
+
+    Presiona n para crear una nueva partición.
+    Presiona p para seleccionar una partición primaria.
+    Ingresa el número de partición (1-4).
+    Ingresa el primer y último sector según el tamaño deseado (1 GB, 1 GB, 500 MB, 500 MB).
+
+Finalmente, presiona w para escribir los cambios en el disco.
+
+    Formatear las particiones:
+        Ext3: sudo mkfs.ext3 -b 2048 /dev/sdb1
+        NTFS: sudo mkfs.ntfs /dev/sdb2
+        FAT32: sudo mkfs.vfat /dev/sdb3
+        ExFAT: sudo mkfs.exfat /dev/sdb4
+    Crear los directorios de montaje:
+
+bash
+
+Copy
+
+   sudo mkdir /rmas /ended /handmade /reopen
+
+    Montar las particiones:
+        Ext3: sudo mount -o noexec /dev/sdb1 /rmas
+        NTFS: sudo mount /dev/sdb2 /ended
+        FAT32: sudo mount /dev/sdb3 /handmade
+        ExFAT: sudo mount /dev/sdb4 /reopen
+    Configurar el montaje automático:
+    Añade las siguientes líneas al archivo /etc/fstab:
+
+Copy
+
+   /dev/sdb1 /rmas ext3 noexec 0 0
+   /dev/sdb2 /ended ntfs defaults 0 0
+   /dev/sdb3 /handmade vfat defaults 0 0
+   /dev/sdb4 /reopen exfat defaults 0 0
+
+    Crear usuarios y grupo:
+
+bash
+
+Copy
+
+   sudo groupadd avencorp
+   sudo useradd -m -g avencorp operator
+   sudo useradd -m -g avencorp administrator
+   sudo useradd -m -g avencorp ceo
+   sudo useradd -m -g avencorp itdirector
+
+    Establecer propietarios y permisos:
+
+bash
+
+Copy
+
+   sudo chown operator:avencorp /rmas
+   sudo chown administrator:avencorp /ended
+   sudo chown ceo:avencorp /handmade
+   sudo chown itdirector:avencorp /reopen
+
+   sudo chmod 770 /rmas /ended /handmade /reopen
+
+   sudo mkdir /rmas/recent
+   sudo chown operator:avencorp /rmas/recent
+   sudo chmod 770 /rmas/recent
+
+
+Ejercicio 2
+
+    Crea dos discos virtuales de 100 MB cada uno en VirtualBox y asegúrate de que estén conectados a la máquina virtual2. Instala el paquete mdadm si no está instalado en tu sistema. Puedes hacerlo con el siguiente comando:
+
+bash
+
+Copy
+
+   sudo apt-get install mdadm
+
+    Crea un volumen de 200 MB de tamaño con los dos discos en stripping utilizando mdadm. Para ello, ejecuta el siguiente comando:
+
+bash
+
+Copy
+
+   sudo mdadm --create /dev/md0 --level=stripe --raid-devices=2 /dev/sdb /dev/sdc
+
+Donde /dev/md0 es el nombre del dispositivo RAID que se creará, --level=stripe indica que se utilizará el nivel de RAID 0 (stripping), --raid-devices=2 indica que se utilizarán dos discos y /dev/sdb y /dev/sdc son los nombres de los discos que se utilizarán.
+
+    Formatea el volumen como ext2 utilizando el siguiente comando:
+
+bash
+
+Copy
+
+   sudo mkfs.ext2 /dev/md0
+
+    Crea el directorio de montaje /mnt/stripped utilizando el siguiente comando:
+
+bash
+
+Copy
+
+   sudo mkdir /mnt/stripped
+
+    Monta volumen en el directorio de montaje utilizando el siguiente comando:
+
+bash
+
+Copy
+
+   sudo mount /dev/md0 /mnt/stripped
+
+    Verifica que elen se ha montado correctamente utilizando el siguiente comando:
+
+bash
+
+Copy
+
+   df -h
+
+Ejercicio 3.
+
+

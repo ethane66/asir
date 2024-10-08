@@ -1,0 +1,192 @@
+// Titulo//
+let  titulo = prompt ('¿Que titulo me quiere poner?', '');
+
+const H1 = document.createElement ('h1');
+document.body.appendChild(H1);
+
+let titulocompleto = document.querySelector('h1');
+titulocompleto.innerHTML = titulo;
+
+//Subtitulo//
+let subtitulo = prompt ('¿Que subtitulo me quieres poner nigga?', '');
+
+const H2 = document.createElement('h2');
+document.body.appendChild(H2);
+
+let subtitulocompleto = document.querySelector('h1');
+subtitulocompleto.innerHTML = subtitulo;
+
+//Resúmen//
+
+let resumen = prompt ('Un preve resumen de su contenido');
+
+const H3 = document.createElement('h3');
+document.body.appendChild(H3);
+
+let resumencompleto = document.querySelector('h3');
+resumencompleto.innerHTML = resumen;
+
+//INformacion//
+
+let informacion = prompt ('¿Quieres meter informacion? (si/no)', '');
+if (informacion.toLowerCase() == 'si' ) informacion = true;
+else informacion = false;
+while (informacion) {
+
+    let lista = prompt ('Quieres alguna lista?', '');
+    switch (lista.toLowerCase()) {
+        case 'si':
+            hacerlista();
+        break;
+        case 'no':
+        break;
+    }
+
+    let parrafo = prompt ('¿Quieres poner algun parrafo con informacion? (si/no)', '');
+    switch (parrafo.toLowerCase()){
+        case 'si':
+            hacerparrafo();
+        break;
+        case 'no':
+        break;
+    }
+
+    let seguir = prompt('¿Quieres introducir mas informacion? (si/no)', '');
+    switch (seguir.toLowerCase()){
+        case 'si':
+            informacion = true;
+        break;
+        case 'no':
+            informacion = false;
+        break;
+    }
+ 
+}
+
+function hacerlista () {
+    let acabar = true;
+    let pregunta = new Array();
+    let x = 0;
+    while (acabar){
+        
+        pregunta[x] = prompt('ponme informacion chaval', '');
+        if (pregunta[x] == 'false') acabar = false;
+        else x = x +1;
+    }
+
+    let formatolista = prompt ('Que formato le ponemos (OL/UL)', '');
+
+    switch (formatolista.toLowerCase()){
+        case 'ol':
+            const OL = document.createElement('ol');
+            document.body.appendChild(OL);
+            let tope = pregunta.length -1;
+            for (var i = 0; i < tope; i++){
+
+                var listado = document.createElement('li');
+                listado.innerHTML = pregunta[i];
+                OL.appendChild(listado);
+            }
+            break;
+        case 'ul':
+            const UL = document.createElement('ul');
+            document.body.appendChild(UL);
+            let tope1 = pregunta.length -1;
+            for (var i = 0; i < tope1; i++){
+
+                var listadoul = document.createElement('li');
+                listadoul.innerHTML = pregunta[i];
+                UL.appendChild(listadoul);
+            }
+            break;
+    }
+
+}
+
+function hacerparrafo(){
+    let acabar = true;
+    let pregunta = new Array();
+    let x = 0;
+    while (acabar){
+        
+        pregunta[x] = prompt('info yaaa', '');
+        if (pregunta[x] == 'false') acabar = false;
+        else x = x + 1;
+    }
+    let tope2 = pregunta.length - 1;
+    for (var i = 0; i < tope2; i++) 
+   {
+    let P = document.createElement('p');
+    P.textContent = pregunta[i];
+    document.body.appendChild(P);
+    }
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('submit').addEventListener('click', validarContraseñas);
+  });
+  function validarContraseñas() {
+    let pass1 = document.getElementById("pass1").value;
+    let pass2 = document.getElementById("pass2").value;
+  
+    if (pass1 === pass2) {
+      ValidarNombre();
+      return true;
+    } 
+    else {
+      alert("Las contraseñas no coinciden");
+      return false;
+    }
+  };
+  function ValidarNombre() {
+    let nombre = document.getElementById("nombre").value;
+  
+    if (nombre.length == 0) {
+        alert("El usuario de Datos Personales es obligatorio");
+        return false;
+    }
+    else {
+        ValidarPrimerApellido();
+        return true;
+    }
+  };
+  function ValidarPrimerApellido() {
+    let primerapellido = document.getElementById("primero").value;
+  
+    if (primerapellido.length == 0) {
+        alert("El primer apellido de Datos Personales es obligatorio");
+        return false;
+    }
+    else {
+        ValidarSegundoApellido();
+        return true;
+    }
+  };
+  function ValidarSegundoApellido() {
+    let segundoapellido = document.getElementById("segundo").value;
+  
+    if (segundoapellido.length == 0) {
+        alert("El segundo apellido de Datos Personales es obligatorio");
+        return false;
+    }
+    else {
+        return true;
+    }
+  };
+  
+  //El Raton//  
+  
+  document.addEventListener("DOMContentLoaded", function() {
+  let foto = document.querySelectorAll(".imagen");
+  foto.forEach((elemento) => {
+    elemento.addEventListener('mouseover' , () => {
+        elemento.style.backgroundColor = 'yellow';
+    });
+    elemento.addEventListener('mouseout' , () => {
+        elemento.style.backgroundColor = '';
+    });
+    });
+  });

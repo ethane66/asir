@@ -1,0 +1,73 @@
+/* Metodos de cadenas */
+
+//concat
+Para concatenar cosas
+
+//startwith
+devuelve true si una cadena empieza con la otra
+
+//endswith
+como start pero con final
+
+//include
+Incluye algo de la cadena anterior en la siguiente devuelve verdadero
+
+//indexOf
+igual que la anterior pero no devuelve verdadero o falso, sino la posicion de la primera letra 
+en la que comienza la primera palabra
+
+//lastIndexOf
+Como en indexOf pero devuelve la primera posicion de la ultima vez que sale el 
+resultado en caso de que haya varios
+
+//split
+Divide la cadena como le 
+se puede separar un array por ejemplo con
+    documen.write(ejemplo[0])
+
+//toLowerCase
+Pasar a minuscula
+
+//toUpperCase
+Pasar a mayuscula
+
+//toString
+Pasa a string un dato
+
+//trim Si pones trimEnd lo hace del final y trimstart lo quita del principio
+Elimina los espacios en blanco
+
+/* Metodos de arrays */
+ //pop
+ Eliminal el ultimo elemento y lo muestra
+
+ //shift
+ Elimina el primero y lo muestra
+
+ //push
+ Agrega un elemento al final del array y nos devuelve la cantidad de elementos que tiene ahora el array
+
+ //reverse 
+ pone las cosas del array al reves
+
+//unshift
+como shift pero primero pero lo inserta al principio
+
+//sort
+Ordena los elementos alfabeticamente/por numero creciente
+
+//splice
+primero se indica de donde empieza, despues pones cuantos elementos quieres quitar, 
+si quieres remplazarlos se ponen despues de una coma
+
+/* Metodos accesores */
+//join
+nos separa los elementos de un array con lo que queramos y es un nuevo cadena de texto
+
+//slice
+devuelve una parte del array dentro de un nuevo array empezando por el inicio hasta el fin (fin no incluido)
+
+/* de repeticion */
+//filter
+da una vuelta al bucle y cada vuelta el valor es de la posicion en la que esta, puedes aplicar un flitro como .length para 
+que sean palabras de mas de 4 caracteres

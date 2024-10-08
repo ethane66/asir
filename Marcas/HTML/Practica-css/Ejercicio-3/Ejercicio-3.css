@@ -1,0 +1,23 @@
+h2 {
+    color: blue;
+    text-align: center;
+}
+
+* {
+    text-align: justify;
+}
+
+ .b {
+    font-weight: bold;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+#sub {
+    font-style: italic;
+    color: grey;
+    font-size: 13px;
+    text-align: right;
+}

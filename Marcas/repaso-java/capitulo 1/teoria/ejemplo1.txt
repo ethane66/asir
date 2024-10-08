@@ -1,0 +1,104 @@
+/* Primera parte*/
+
+/* Variables */
+recipiente = "pepe"
+alert(recipiente)
+
+/* Tipos de texto */
+String = "Cadena de texto"
+Number = 19
+Boolean = false /*true o false*/
+
+/*variables*/
+var /* Alcanze global*/
+let numero = 15; /* Menos alcanze*/
+const /* Son constantes, no pueden cambiar de valor*/
+
+/* 
+Undefied: es un valor que existe pero no esta inicializada o no tiene valor
+null: Le especificamos nostros que no va tener valor
+NaN: Not a Number, una operacion que requiere que sean numeros como multiplicar
+*/
+/* Poder poner varias en la misma linea es lo mismo que ponerlo separado*/
+let numero = 2, numnero2 = 4, numero3 = 6;
+
+let numero = 2;
+let numero2 = 4;
+let numero3 = 6;
+
+/* Operadores javascript */
+
+/* Operadores de asignacion */
+/*
+Asigna un valor operando de la izquiera basado en el valor del operando de la derecha
+*/
+
+let numero = 10;
+
+ numero += 5; /* le suma 5 a numero que es 10 y nos imprime 15 */
+
+ document.write(numero)
+
+ /* Operadores Arimeticos */
+
+ Toman valores numerios como sus operandos y retornan un valor numerico unico
+ 
+
+/* Concatenacion */
+ 
+Se pone un + para unir 2 o mas variables
+
+saludo = "Hola Ethan"
+pregunta = "Como estas?"
+
+frase = saludo + pregunta;
+
+document.write(frase);
+
+numero1 = 5;
+numero2 = 8;
+frase2 ="" + numero1 + numero2 /* Se pone las "" para hacerlo un string y los pone como texto y no los sumara*/
+document.write(frase2) 
+
+/* backticks y concatenar */
+para los backtick es alt+96 
+Puedes poner codigo html dentro de los backticks y funcionara
+nombre = "Ethan"
+frase3 = `soy ${nombre} y estoy caminando` /* Nos imprime nombre y la frase sin tener que cerrarlo ni usar el + o ""*/
+
+/* Operadores*/
+/* Comparacion */
+Son variables que se usan para comprar, es el == o no igual != y parecidos
+/* Logicos */
+Nos devuelven un resultado a partir de que se cumpla 0 no una condicion, su resultado es booleando y sus operadores son valores logicos o asmilables a ellos
+
+//Ejemplos logicos
+let valor = true;
+let valor2 = true;
+
+let resultado = valor && valor2; //Si las dos se cumples es true
+
+let num1 = 12
+let num2 = 24 
+let afirmacion1 = num1 < num2;
+let afirmacion2 = num1 == num2;
+document.write(afirmacion1 || afirmacion2); //Con que uno de los valores que le pongamos sea verdadero devuelve true
+
+//not logico
+let num1 = 12
+let num2 = 24 
+let afirmacion1 = num1 < num2;
+let afirmacion2 = num1 == num2;
+document.write(!afirmacion1); //Hace lo contrario de lo que tiene que salir, ejemplo, afirmacion1 es verdadero pero pondra falso y con afirmacion 2 es falso pero pondra verdadero
+
+
+/* Camel case */
+La primera palabra empeiza en miniscula, todas las demas palabras que  detras empiezan con mayuscula
+ej parseInt 
+
+/* Condicionales */
+Solo ejecuta bloques o codigo cumpliendo ciertas condiciones
+
+
+
+

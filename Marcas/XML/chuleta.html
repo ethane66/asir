@@ -1,0 +1,143 @@
+<!--   cabeceras   -->
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--   sin espacio de nombres   -->
+    <!--   xml   -->
+    <elemento xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="archivo.xsd">
+    </elemento>
+
+    <!--   xsd   -->
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    </xs:schema>
+
+<!--   con espacio de nombres   -->
+    <!--   xml   -->
+    <elemento xmlns:PREFIJO="URL"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="URL archivo.xsd">
+    </elemento>
+
+    <!--   xsd   -->
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="URL">
+    </xs:schema>
+
+<!--   elementos   -->
+<xs:element name="xxx" type="yyy" default="yyy“ fixed="yyy" minOccurs="" maxOccurs=""></xs:element>
+
+<!--   atributos   -->
+<xs:attribute name="xxx" type="yyy" default="yyy“ fixed="yyy" use=“required" ></xs:attribute>
+
+    <!--   tipo simple   -->
+    <xs:simpleType name="ejemplo">
+    </xs:simpleType>
+
+    <!--   tipo complejo   -->
+    <xs:complexType name="ejemplo2">
+    </xs:complexType>
+
+        <!-- indicadores -->
+        <xs:all minOccurs="" maxOccurs="">
+        </xs:all>
+
+        <xs:choice minOccurs="" maxOccurs="">
+        </xs:choice>
+
+        <xs:sequence minOccurs="" maxOccurs="">
+        </xs:sequence>
+
+        <xs:any minOccurs="" maxOccurs=""/>
+        <xs:anyAttribute minOccurs="" maxOccurs=""/>
+
+
+        <!-- permite definir restricciones o extensiones a elementos que solo contienen datos  -->
+        <xs:simpleContent></xs:simpleContent>
+
+        <!-- sirve para definir restricciones o extensiones a un tipo complejo -->
+        <xs:complexContent></xs:complexContent>
+
+        <!--   restricciones   -->
+        <xs:restriction base="xs:integer">
+            <xs:tipo value="0"/>
+        </xs:restriction>
+
+        <!--  extensiones -->
+        <xs:extension base="ejemplo">
+        </xs:extension>
+
+
+
+<!-- Elementos vacíos -->
+complexType sin indicadores
+<!-- Elementos que solo contienen elementos -->
+complexType -> simpleContent
+<!-- Elementos complejos que solo contienen texto -->
+complexType -> simpleContent -> extension 
+<!-- Elementos complejos con contenido mixto -->
+<xs:complexType mixed="true"></xs:complexType>
+
+
+<!-- clave -->
+    <xs:key name="nombre1">
+    </xs:key>
+
+<!-- referencia -->
+    <xs:keyref name="nombre2" refer="nombre1">
+    </xs:keyref>
+
+<!-- valor único -->
+    <xs:unique name="nombre3">
+    </xs:unique>
+   
+    <!-- selector y field -->
+        <xs:selector xpath="elemento"/>
+        <xs:field xpath="elemento/@atributo"/>
+
+<!-- grupos -->
+<xs:group name="nombregrupo">
+    <!-- indicador -->
+        <xs:element ref="otroelemento"></xs:element>
+    <!-- indicador -->
+</xs:group>
+<xs:group ref="nombregrupo" minOccurs="" maxOccurs=""></xs:group>
+
+<!-- grupos atributos -->
+<xs:attributeGroup></xs:attributeGroup>
+
+
+<!-- El elemento de unión define un tipo simple como una colección (union) de los valores de tipos de datos simples especificados. -->
+<xs:union>
+    simpleType(restriction) + simpleType(restriction)
+</xs:union>
+
+
+
+<!--   tipos de datos   -->
+xs:string
+xs:decimal
+xs:integer
+xs:boolean
+xs:date
+xs:time
+xs:dateTime
+xs:name
+xs:gYear
+xs:gDay
+xs:gMonth
+xs:float
+
+<!-- tipos de restricciones -->
+
+enumeration     Define una lista de valores aceptados
+fractionDigits  Máximo número de decimales.
+length          Número exacto de caracteres.
+maxExclusive    Valor máximo para elementos numéricos
+maxInclusive    Valor máximo para elementos numéricos (el propio límite también es aceptado)
+maxLength       Máximo número de caracteres
+minExclusive    Valor mínimo para elementos numéricos
+minInclusive    Valor mínimo para elementos numéricos (el propio límite también es aceptado)
+minLength       Mínimo número de caracteres
+pattern         Patrón al que deben ajustarse los valores introducidos
+totalDigits     Número total de dígitos permitidos.
+

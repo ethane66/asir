@@ -1,0 +1,44 @@
+header {
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+    padding-left: 1em;
+}
+
+a {
+    padding: 1em;
+}
+
+article{
+    border-style: dotted;
+    border-color: fuchsia;
+    margin-top: 1em;
+}
+
+section {
+    border:solid;
+    border-color: rgb(142, 5, 147);
+    background-color: lightgrey;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+section+section {
+    border-style: dashed;
+    border-color: blue;
+    margin-bottom: 3px;
+    text-align: left;
+    background-color: transparent;
+}
+
+footer{
+    border-top: 1px solid grey;
+    text-align: center;
+    margin-top: 1em;
+    padding: 1em ;
+    font-weight: bold;
+}
+

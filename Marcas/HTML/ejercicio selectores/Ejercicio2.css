@@ -1,0 +1,48 @@
+/* No borrar la siguiente regla CSS porque es necesaria para ver los bordes de la tabla */
+table, tr, th, td {border:1px solid #000; border-collapse:collapse; padding:5px;}
+
+caption { color: blue; }
+td { color: green; }
+td strong { color: orange; }
+th { color: red; }
+th.especial { color: orange; }
+
+h1 {
+    color: rgb(23, 117, 92);
+}
+
+strong {
+    color: red;
+}
+
+.destacado {
+    color: orange;
+}
+
+h2{
+    color: blue;
+}
+
+ a {
+    color: red;
+    text-decoration: underline red;
+}
+
+
+p em {
+    color: blue;
+    text-decoration: underline red;
+}
+
+#adicional {
+    color: rgb(101, 159, 20);
+}
+
+#adicional a {
+    color: darkgreen;
+    text-decoration: underline darkgreen;
+}
+
+#adicional #especial {
+    color: fuchsia;
+}

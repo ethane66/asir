@@ -1,0 +1,475 @@
+------------------
+--Teoria fechas---
+------------------
+
+select to_date('10-10-2005', 'DD-MM-YYYY') from dual; --Asi es como se busca, para cambiar como se muestra en el cliente es desde preferencias
+
+select to_date('10-octubre-2005', 'DD-MONTH-YYYY') from dual;
+
+select * from section where start_date_time < '11-JUN-2007';
+
+select extract (year from start_date_time) from section; --El extract extrae cierta info de fechas
+
+select extract (month from start_date_time) from section; --El extract extrae cierta info de fechas
+
+select extract (day from start_date_time) from section; --El extract extrae cierta info de fechas
+
+--------------------
+---Teoria ordenar---
+--------------------
+
+select
+    * 
+from 
+    student 
+order by
+    last_name, first_name; --Ordena por el orden de izquierda a derecha en los empates
+
+
+    
+    --Teoria nvl:Pone un valor por defecto su un valor es null
+
+select student_id,section_id, nvl(to_char(final_grade),'Aun sin nota') from enrollment;
+
+select
+
+sysdate + interval '30' day,
+sysdate + interval '1' month
+
+
+from dual;
+
+
+--substr son partes de un varchar
+select first_name, substr (first_name,2,1) from student;
+
+--los nombre que tienen z entre las posiciones 1 y 3
+select * from student where instr(lower(first_name),'z')between 1 and 3;
+
+--concatenar campos
+--primera busqueda se junta con las barras y despues la segunda
+select first_name ||'--'|| last_name from student;
+
+--funcion de concatenar
+select concat(first_name,last_name) from student;
+
+--producto cartesiano sirve para juntar las tablas que se han separado al normalizar, es decir las tablas originales
+
+select 
+s.student_id, s.first_name, s.last_name, s.street_address, s.zip,
+z.zip, z.city, z.state
+
+from student s, zipcode z 
+where z.zip = s.zip;
+
+--Otra manera de hacerlo (al profe le gusta mas este)
+
+select
+s.student_id, s.first_name, s.last_name, s.street_address, s.zip,
+z.zip, z.city, z.state
+
+from (student s join  zipcode z on z.zip = s.zip); 
+
+--Query traducia a list (in)
+
+--Datos de los cursos con secciones de 25 de capacidad
+select * from section where capacity=25;
+select distinct course_no from section where capacity = 25;
+
+--solucion con in
+select * from course where course_no in(
+    select distinct course_no from section where capacity=25
+);
+
+--con producto cartesiano
+select distinct c.*
+from
+    course c join section s on c.course_no = s.course_no
+where s.capacity = 25;
+
+
+--Operaciones con conjuntos
+
+--Intersect
+select first_name from student
+intersect 
+select first_name from instructor;
+
+--difference Los nombres de los profes queno tengan los estudiantes
+select first_name from instructor
+minus
+select first_name from student;
+
+
+-----------------------
+---Teoria paginacion---
+-----------------------
+
+--paginacion en consultas
+
+with student_con_orden as(
+    select rownum as orden, student.*
+    from student
+)
+select * from student_con_orden where orden >100 and orden <200;
+
+--Operaciones con conjuntos
+
+-------------
+--Intersect--
+-------------
+
+select first_name from student
+intersect 
+select first_name from instructor;
+
+--difference Los nombres de los profes queno tengan los estudiantes
+select first_name from instructor
+minus
+select first_name from student;
+
+
+---------------------------
+--paginacion en consultas--
+---------------------------
+
+with student_con_orden as(
+    select rownum as orden, student.*
+    from student
+)
+select * from student_con_orden where orden >100 and orden <200;--Operaciones con conjuntos
+
+-------------
+--Intersect--
+-------------
+
+select first_name from student
+intersect 
+select first_name from instructor;
+
+--difference Los nombres de los profes queno tengan los estudiantes
+select first_name from instructor
+minus
+select first_name from student;
+
+
+---------------------------
+--paginacion en consultas--
+---------------------------
+
+with student_con_orden as(
+    select rownum as orden, student.*
+    from student
+)
+select * from student_con_orden where orden >100 and orden <200;--Operaciones con conjuntos
+
+--Intersect
+select first_name from student
+intersect 
+select first_name from instructor;
+
+--difference Los nombres de los profes queno tengan los estudiantes
+select first_name from instructor
+minus
+select first_name from student;
+
+
+---------------------------
+--paginacion en consultas--
+---------------------------
+
+with student_con_orden as(
+    select rownum as orden, student.*
+    from student
+)
+select * from student_con_orden where orden >100 and orden <200;--Operaciones con conjuntos
+
+--Intersect
+select first_name from student
+intersect 
+select first_name from instructor;
+
+--difference Los nombres de los profes queno tengan los estudiantes
+select first_name from instructor
+minus
+select first_name from student;
+
+
+---------------------------
+--paginacion en consultas--
+---------------------------
+
+with student_con_orden as(
+    select rownum as orden, student.*
+    from student
+)
+select * from student_con_orden where orden >100 and orden <200;--Operaciones con conjuntos
+
+--Intersect
+select first_name from student
+intersect 
+select first_name from instructor;
+
+--difference Los nombres de los profes queno tengan los estudiantes
+select first_name from instructor
+minus
+select first_name from student;
+
+
+
+--paginacion en consultas
+
+with student_con_orden as(
+    select rownum as orden, student.*
+    from student
+)
+select * from student_con_orden where orden >100 and orden <200;--Operaciones con conjuntos
+
+--Intersect
+select first_name from student
+intersect 
+select first_name from instructor;
+
+--difference Los nombres de los profes queno tengan los estudiantes
+select first_name from instructor
+minus
+select first_name from student;
+
+
+
+--paginacion en consultas
+
+with student_con_orden as(
+    select rownum as orden, student.*
+    from student
+)
+select * from student_con_orden where orden >100 and orden <200;--Operaciones con conjuntos
+
+--Intersect
+select first_name from student
+intersect 
+select first_name from instructor;
+
+--difference Los nombres de los profes queno tengan los estudiantes
+select first_name from instructor
+minus
+select first_name from student;
+
+
+
+--paginacion en consultas
+
+with student_con_orden as(
+    select rownum as orden, student.*
+    from student
+)
+select * from student_con_orden where orden >100 and orden <200;
+
+select student.*
+from student
+order by last_name
+offset 0 rows
+FETCH next 1 rows with ties;
+
+-------------------------
+--Modificacion de datos--
+-------------------------
+
+oracle solo guarda si haces comit o haces un cambio a la base tipo crear tabla
+para deshacer se hace rollback
+
+
+--Para borrar bien se hace con un select
+delete from grade where section_id=65 --borra todo con section id = 65
+
+--para actualizar datos se hace con
+update <tabla> set 
+update grade set numeric_grade=90,
+comments='Tenía un'||numeric_grade||', pero les quité 5 puntos'
+where section_id=97
+and grade_type_code='FI';
+
+select * from student 
+where first_name = 'Fred' 
+update student set street_address = 'New Millford'
+where first_name = 'Fred';
+
+
+ALTER TABLE GRADE ADD CONSTRAINT sin_negativos CHECK (NUMERIC_GRADE >=0);
+
+--------------------
+--propiedades ACID--
+--------------------
+No ACID tambien se le dice NO SQL
+ACID es lo normal
+
+Atomicidad: Conjunto de cambios que se realiza en su totalidad o no se realiza ninguno
+Consistencia: Las reglas de los datos se respetan
+Aislamiento: Cada usuario puede trabajar considerando que es el unico que utiliza la base de datos
+Durabilidad: Una vez grabada una modificacion, persistira aunque ocurra algun fallo posterior
+
+--------------
+--Atomicidad--
+--------------
+
+Algunos cambios deben producirse juntos:
+    Ej: transferencia bancaria debe restar de una cuenta y sumar en la otra.
+Conjunto de cambios se llama transacion
+Una transacion empieza cuando acaba la siguiente
+Termina con:
+    commit: Los cambios se guardan
+    Rollback: ningun cambio se guarda
+    Desconecion o error:
+
+----------------
+--Consistencia--
+----------------
+
+Los datos deben ser coherentes con el modelo de datos.
+
+---------------
+--Aislamiento--
+---------------
+
+Objetivos:
+    Cada usuario debe poder trabajar como si fuera el unico
+    Pero al mismo tiempo los datos deben poder accederse concurrentemente
+Esto supone llegar a un compromiso
+    Cuanto mas Aislamiento menos concurrencia
+    Cuanto mas concurrencia menos Aislamiento
+
+---------------
+--Durabilidad--
+---------------
+
+Las bases de daots garantizan tras la vuelta del commit que:
+    Los datos han sido guardados a soporte no volatil
+
+---------------------------------
+--Problemas del uso concurrente--
+---------------------------------
+ 
+ Lectura sucia: Un susuario lee datos aun no confirmados
+ Lectura no repetible: Un usuario lee menos filas en select sucesivas dentro de la misma transaccion
+ Fila fantasma: Un usuario lee mas filas en select sucesivas dentro de la misma transaccion
+
+ read commited (defecto en oracle): Arregla el problema de lectura sucia
+ repeatable read: Arregla el problema de lectura no repetible y la anterior
+ Serializable: Arrelga el problema de filas fantasma y las anteriores
+
+
+-------------
+ --Bloqueos--
+ ------------
+
+ El bloqueo no automatico se pone con el comando, se pueden bloquear filas,campos o tablas.
+ Pra bloquear una tabla completa seria:
+    lock table TABLA
+Bloque de algunas filas seria:
+    select <cpnsulta que devuelva algunas filas de una tabla> 
+    for update
+
+-------
+--DFL--
+-------
+
+------------
+--Usuarios--
+------------
+
+Crear usuario:
+    create user usuario
+    identified by contraseña
+    account unlock
+    ej: create user probando identified by p
+
+modificar usuario
+    alter user usuario
+    "cualquier opcion valida de crear usuario"
+
+borrar usuario
+    drop usuario
+
+---------------
+--privilegios--
+---------------
+
+grant "privilegio" to "usuario"
+
+ej  grant connect to probando
+    grant create table to probando
+
+el grant se puede aplicar a diferentes bases o objetos
+    grant select on academia.student to probando
+
+Para quitar un permiso
+revoke "permiso" from "usuario"
+
+--------------
+--Permisos 2--
+--------------
+
+Permite a propietario a dar permiso select tambien, 
+si se lo quitas se lo quitas a todos
+    (sys) grant select on datos to propietario with grant option
+    (pro) grant select on datos to limitado
+
+cuando dar permiso de create table da un error de table space se arregla con:
+    grant unlimited tablespace to "usuario"
+
+Dar select sobre ciertas columna (no oracle)
+    grant select (texto) on datos to limitado
+
+Modo oracle creas una vista con los datos que quieras que vea y le 
+das grant a la vista
+
+cuando le das permiso select a un usuario, el usuario tiene que poner tunombre.tabla.
+Ejemplo clase
+
+    (propietario) create table datos (texto varchat2(255), numero integer)
+    (propietario) grant select on datos to limitado
+    (limitado) select * from propietario.datos
+
+---------
+--Roles--
+---------
+
+En un rol se le asignan varios privilegios y al usuario se le asigna ese rol
+    create role "nombre"
+    grant "privilegio" to "role"
+    grant "role" to "usuario"
+Puedes dar un role a un role
+
+
+Ejemplo anterior con roles
+    (sys) create role mirole
+    (sys) grant mirole to propietario
+    (sys) grant mirole to limitado
+    (propietario) create table datos (texto varchat2(255), numero integer)
+    (propietario) grant select on datos to mirole
+    (limitado) select * from propietario.datos
+
+---------------
+--Teoria case--
+---------------
+
+El case son como condiciones que se ponen para que se cumplan ciertas acciones, en este ejemplo hemos hecho un traductor concurrente
+
+DECLARE
+  palabra varchar(100) := 'lunes';
+BEGIN
+    case
+        when( palabra = 'lunes' ) then
+            dbms_output.put_line( 'monday');
+        when( palabra = 'perro' ) then
+            dbms_output.put_line( 'perro');
+        when( palabra = 'adios' ) then
+            dbms_output.put_line( 'bye');
+        when( palabra = 'hola' ) then
+            dbms_output.put_line( 'hello');
+        else
+        dbms_output.put_line( 'No se la traduccion');
+    end case;
+END;
+
+

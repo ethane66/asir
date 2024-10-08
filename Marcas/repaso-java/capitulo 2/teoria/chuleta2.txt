@@ -1,0 +1,74 @@
+/* Arrays*/
+variable que Guarda mucha informacion igual o  distinto tipo
+ej
+//Posicion      0         1         2    3  4  5
+let frutas = ["bananas","manzana","pera",5,9,"pedro]; 
+document.write(frutas) //muestra todos
+document.write(frutas[1]) //muestra manzana ya que empieza a contar desde 0
+
+/* Arrays asociativos */
+
+let pc1 = {
+    nombre: "EthanPC",
+    procesaor:"Ryzen 5",
+    ram:"48GB",
+    espacio:"1TB"
+};
+document.write(pc1["ram]) //Me muestra el elemento llamado 'ram'
+
+Ejemplo mas complejo en ejemplo.js
+
+/* Bucles e Iteracion */
+//bucles while
+Se ejecuta mientras sea verdadero todo el rato hasta que sea falso
+
+//doWhile
+primero se ejecuta y despues mira la condicion del while
+
+//sentencia break
+Termina la sentencia
+
+//sentencia for
+Se ejecutan las veces que nosotros le indicamos, tiene 3 partes
+1: declaramos
+2: inicializamos
+3: aumento - decrementi
+
+
+
+
+//sentencia continue
+se salta la ejecucion sin terminal el bucle, en el caso del ejemplo se salta cuando es igual a 12
+
+
+
+//sentencia for in
+nos devuelve la posicion de cada elemento y recorre cada elemento de la variale, fuera o dentro de el
+
+//sentencia for of
+Nos devuelve cada elemento del variable que este dentro
+
+//sentencia label
+es ponerle nombre a las sentencias for por ejemplos
+
+/* Funciones */
+primero se tiene que definir y despues en cuando se llaman
+Cojemos una parte del codigo de un programa y le asignamos un nombre, en adelante si queremos ejecutar ese codigo en vez de escribirlo todo de nuevo lo llamamos
+Tambien se puede poner en una variable
+
+//return
+Nos devuele un dato de esa funcion y ademas termina la funcion, mirar ejemplo
+
+//parametros
+son paramertros que se crean y se declaran en la funcion (mirar ejemplo)
+
+//funciones flecha
+es igual pero se cambia function por => (una flecha), si solo es un parametro se puede poner sin parentesis
+y si solo es una linea de codigo se puede usar sin corchetes
+ej 
+const saludar = nombre => document.write(frase);
+const saludar = (nombre)=> {
+    document.write("Hola como estas" + nombre)
+}
+
+saludar (pedro) //funcionaria con cualquiera de los dos const

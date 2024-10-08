@@ -1,0 +1,167 @@
+
+
+/* CSS del grid layout */
+
+.angry-grid {
+    display: grid; 
+  
+    
+  
+    
+    
+    grid-template-areas: 
+    'header header header header header'
+    'nav nav nav nav nav'
+    'main main main main aside'
+    'main main main main aside'
+    'footer footer footer footer footer';
+    
+    gap: 3px;
+    
+  }
+   
+  #item-0 {
+  
+    
+    grid-area: header;
+    border-radius: 30px;
+    border-style:dashed;
+    background-color: black;
+  }
+  
+  #item-0 img {
+    float: left;
+  }
+  
+  #item-1 {
+  
+  
+    grid-area: nav;
+    
+  }
+  
+  #item-2 {
+  
+  
+    grid-area: main;  
+  }
+  #item-3 {
+  
+  
+    grid-area: footer;
+  }
+  #item-4 {
+  
+  
+    grid-area: aside;
+  
+    
+  }
+  
+  /* Codigo resto de elementos html */
+  
+  body {
+  background-color: antiquewhite;
+  }
+  .imgaside {
+  width: 100px;
+  height: 100px;
+  }
+  
+  h1 {
+  text-align: center;
+  color: blue;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #38444d;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+  }
+  
+  li.dropdown {
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1;}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropbtn {
+    pointer-events: none;
+    cursor: default;
+  }
+  
+  html{
+   
+    background-color: white;
+  }
+  
+  header h1 {
+    color:blue;
+    text-align: center;
+    font-size: 4em;
+  
+  }
+  nav {
+    
+    background-color: aqua;
+  }
+  nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    padding: 5em;
+  }
+  ul{
+    list-style: none;
+  }
+  
+  .imgagenizq {
+    width: 80px;
+    height: 80px;
+    float: left;
+    padding: 10px;
+  }
+  
+  
+  pre {
+    float: left;
+  }

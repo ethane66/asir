@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+    var num1 = prompt('Ingrese un número positivo y entero');
+        num1 = parseInt(num1);
+//Manera Vero
+        if(num1>0)
+        {
+            if (num1 <= 9) {
+            document.write("Tiene un digito")
+            }
+            else if(num1>9 && num1<100) 
+                    {
+                    document.write("Tiene 2 digitos")
+                    }   
+                else 
+                    {
+                    document.write("Tiene 3 digitos")
+                    }
+        }  
+        
+
+//Manera Ethan
+
+        if (num1 <= 9) {
+            document.write("Tiene un digito")
+        }
+        else if  (num1>9 && num1<100)
+         {
+            document.write("Tiene 2 digitos")
+        }
+        else {
+            document.write("Tiene 3 digitos")
+        }
+    
+
+    
+    </script>
+</body>
+</html>

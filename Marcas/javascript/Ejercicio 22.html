@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var nombre = prompt("Por favor introduce tu nombre: ");
+if (nombre) {
+    console.log(`Hola ${nombre}. Bienvenido a esta página web.`);
+} else {
+    console.log("No has introducido ningún nombre.");
+}
+
+var edad = prompt("¿Cuál es tu edad?: ");
+if (edad) {
+    edad = parseInt(edad);
+    if (edad > 3 && edad < 10) {
+        console.log("Eres un niño");
+    } else if (edad >= 10 && edad < 18) {
+        console.log("Eres un jovencito");
+    } else if (edad >= 18 && edad < 90) {
+        console.log("Eres mayor de edad");
+    } else if (edad >= 90) {
+        console.log("Tienes muchos años encima...");
+    }
+} else {
+    console.log("No has introducido un valor válido de edad");
+}
+
+    </script>
+</body>
+</html>

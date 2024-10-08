@@ -1,0 +1,56 @@
+
+#PRÁCTICA VLAN Y ACL
+
+#Los servidores no pueden enviar/recibir paquetes a/desde Internet, de ningún tipo
+✔
+#Los demás ordenadores pueden acceder a Internet, pero solo se permiten conexiones TCP salientes. No
+#se permite intercambio UDP con Internet (se probará intentando usar un servidor de DNS en Internet).
+✔
+#Los ordenadores de comercio pueden intercambiar cualquier paquete con el servidor de comercio. No
+#pueden acceder al servidor de soporte.
+✔
+#Los ordenadores de soporte pueden intercambiar cualquier paquete con el servidor de comercio y el
+#servidor de soporte.
+✔
+#Los ordenadores de soporte y comercio no pueden intercambiar paquetes.
+✔
+#Los servidores pueden intercambiar entre sí cualquier paquete.
+✔
+
+# 110 - Internet
+
+interface GigabitEthernet0/0/1
+ip access-group 110 in
+exit
+access-list 110 deny ip any host 10.16.0.4 
+access-list 110 deny ip any host 10.16.128.4
+access-list 110 permit tcp any any established
+access-list 110 deny udp any any
+
+
+
+interface GigabitEthernet0/0/0.2
+ip access-group 120 in
+exit
+access-list 120 deny ip host 10.16.0.4 host 8.8.8.8
+access-list 120 deny udp any host 8.8.8.8
+access-list 120 permit tcp any any
+access-list 120 permit ip host 10.16.0.4 host 10.16.128.4
+access-list 120 permit ip 10.16.0.0 0.0.255.255 host 10.16.128.4
+access-list 120 deny ip host 10.16.0.4 10.16.128.0 0.0.255.255
+access-list 120 deny ip 10.16.0.0 0.0.255.255 10.16.128.0 0.0.255.255
+access-list 120 permit ip any any
+
+
+interface GigabitEthernet0/0/0.3
+ip access-group 130 in
+exit
+access-list 130 deny ip host 10.16.128.4 host 8.8.8.8
+access-list 130 deny udp any host 8.8.8.8
+access-list 130 permit tcp any any
+access-list 130 permit ip host 10.16.128.4 host 10.16.0.4
+access-list 130 permit ip host 10.16.128.4 10.16.0.0 0.0.255.255 
+access-list 130 deny ip 10.16.128.0 0.0.255.255 host 10.16.0.4
+access-list 130 deny ip 10.16.128.0 0.0.255.255 10.16.0.0 0.0.255.255
+access-list 130 permit ip any any
+

@@ -1,0 +1,41 @@
+1. Selecciona todos los elementos autor dentro del contexto actual (todos los hijos directos del nodo actual que tengan como etiqueta autor)
+
+//archivo/artista/@*
+
+2. Selecciona todos los elementos título  en cualquier parte del documento
+
+
+
+3. Selecciona todos los párrafos de un libro 
+
+
+
+4. Selecciona los elementos con etiqueta título que cuelgan directamente de libro
+
+
+
+5. Selecciona todos los elementos capítulo que aparecen dentro de libro y de éstos nos quedamos sólo con aquéllos que tengan el valor '1' en su atributo num
+
+
+
+6. Selecciona el atributo num que posean los elementos 
+
+
+
+7. Selecciona el último capítulo
+
+
+
+8. Selecciona todos los capítulo excepto el último 
+
+
+
+9. selecciona el texto de todos los nodos párrafo
+
+
+
+10. selecciona el segundo capítulo
+
+
+
+11. Selecciona todos los elementos hijo de los elementos capítulo que posean el atributo public.

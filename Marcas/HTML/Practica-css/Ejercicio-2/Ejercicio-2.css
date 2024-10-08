@@ -1,0 +1,14 @@
+body {
+    background-image: url(blue-sky.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+* {
+    color: yellow;
+    font-family: Verdana;
+}
+
+p {
+    line-height: 30px;
+}

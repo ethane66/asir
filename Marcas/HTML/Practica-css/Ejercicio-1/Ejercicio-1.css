@@ -1,0 +1,21 @@
+#uno {
+    text-align: center;
+}
+#uno + p {
+    text-align: right;
+}
+#uno + p + p {
+    text-align: justify;
+}
+
+span a {
+    font-weight: bold;
+    color: green;
+    letter-spacing: normal;
+    text-decoration: none;
+}
+
+a {
+    letter-spacing: 6px;
+}
+

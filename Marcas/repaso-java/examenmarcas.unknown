@@ -1,0 +1,258 @@
+///////////////////////////////
+///////   JAVASCRIPT    ///////
+///////////////////////////////
+
+//INICIALIZACIÓN Y DEFINICIÓN DE VARIABLES
+var nombre='Juan';
+var sueldo=6500;
+var sueldo;
+nombre=prompt('Ingrese su nombre:','');
+var nombre=prompt('Ingrese su nombre:','');
+
+//INICIALIZACIÓN Y DEFINICIÓN DE ARRAYS
+let fruits = ["Apple", "Orange", "Plum"];
+fruits[2] = 'Pear'; // reemplazar
+fruits[3] = 'Lemon'; // agregar
+alert( fruits[0] ); // Apple
+
+// NUMEROS
+.parseInt(string, base); // Convierte un string a numero entero TUNCANDO
+
+.parseFloat(string);  // Convierte un string a número con sus decimales
+
+
+//STRING
+.toString(); // return equivalent string
+
+.charAt(numero_de_caracter); // Devuelve el caracter de la posición indicada
+
+.concat(sting1, string2, ...); // Concatena
+
+
+.replace(str||regex, newstr||func);
+
+.replace('dog', 'monkey');
+
+
+.split(sep|regex [,limit]); // divide string CREA UN string con formato de "ARRAY" ////separador es el caracter por el que dividir
+
+.endsWith(str [,size]); check endingb // devuelve un boleano, size es inutil
+
+.substr(ini [,len]); substr of len length // como en oracle
+
+.substring(ini [,end]); substr fragment // cadena.substring(indiceA[, indiceB']) IDK
+
+.toLowerCase(); string to lowercase // minusculas    
+
+.toUpperCase(); string to uppercase // mayusculas
+
+.trim(); remove space from begin/end // quitar espacios
+
+//ARRAY
+.length // Devuelve la longitur de un sting O EL NUMERO DE ELEMENTOS DE UN ARRAY
+
+.includes(searchElement, [fromIndex]); // determina si un array contiene lo que buscas como uno de sus elementos
+
+.join([separator]); // une los elementos de un array
+
+.fill(value[, start = 0[, end = this.length]]); // RELLENA UN ARRAY CON EL VALOR DADO DESDE LA POSICION DADA HASTA LA POSICION DADA
+
+.pop(); // quita el ultimo elemento de un array y lo muestra en un alert
+
+.shift(); // quita el primer elemento de un array y lo muestra en un alert
+
+.push("Orange" [,"Peach"]); // Agrega uno o varios elemento al final del array
+
+.unshift("Orange" ,["Peach"]); // Agrega uno o varios elemento al principio del array
+
+//LISTAR ELEMENTOS DE UNA ARRAY
+      let arr = ["Apple", "Orange", "Pear"]; 
+    
+      for (let i = 0; i < arr.length; i++) {
+        alert( arr[i] );
+      }
+
+
+// ARRAYS && STRINGS
+.indexOf(str [,from]) // find substr index o array
+
+.lastIndexOf(str [,from]) // find from end o array
+
+.slice([ini, [end]]) // str between ini/end
+
+.sort([compareFunction]) // ORDENAR, NO USES EL COMPARADOR
+
+
+// fechas
+Date.now() timestamp of current time // fecha actual numerico // nombre = Date.now();
+
+// condicional
+if (comparacion [&& comapracion] [|| comparacion]){
+ 
+    sentencia;
+
+} else {
+    sentencia;
+}
+
+if (comparacion [&& comapracion] [|| comparacion]){
+ 
+    sentencia;
+
+} else if (comparacion [&& comapracion] [|| comparacion]){
+   
+    sentencia;
+
+}
+
+//bucles
+switch (<valor>) {
+    case <valor1>: document.write('uno');
+    break;
+    case <valor2>: document.write('dos');
+    break;
+    default:document.write('debe ingresar un valor comprendido entre 1 y 2.');
+}
+
+while (<condicion>) {
+    document.write(x);
+    document.write('<br>');
+
+    <incremento>;
+}
+
+do {
+    valor=prompt('Ingrese un valor entre 1 y 999:','');
+    document.write(valor);
+
+    <incremento>;
+
+} while(<condicion>);
+
+
+for (<Inicialización> ; <Condición> ; <Incremento o Decremento>)
+{
+<Instrucciones>
+}
+
+
+// FUNCIONES
+function sayHi() {
+    alert( "Hola" );
+}
+
+let sayHi = function() {
+    alert( "Hola" );
+  };
+
+function sayHi(name) {
+  alert( `Hola, ${name}` );
+}
+
+
+//EVENTOS
+.onClick
+.onDblClick
+.onLoad
+.onFocus
+.onSubmit
+
+///////////////////////////////
+////////     DOM     //////////
+///////////////////////////////
+
+// document.
+document.write(nombre);
+document.write('<br>');
+document.write(sueldo);
+
+console.log(nombre + "<br>" + sueldo);
+
+.createAtribure(nombre) // create Attr obj
+.createElement(tag) // create Element obj
+.createTextNode(text) // create TextNode
+
+.getElementById(id) // find elem with id
+.getElementsByName(name) // w/ name
+
+// elemento
+.attributes // array of Attr objects
+.className // classes list to string
+.id // id string of element
+.name // name string of element
+.tagName // HTML tag of elemen
+
+ .innerHTML // get/set HTML inside elem
+ .outerHTML // get/set HTML (incl. elem)
+
+
+.getElementsByClassName(class); //
+.getElementsByTagName(tag); //
+.querySelector(selec); //return first elem
+.querySelectorAll(selec); //return elems
+
+// document.element.
+.addEventListener(ev, cb(ev), capt); //
+.removeEventListener(ev, cb(ev), capt); //
+
+// v_elemento||document.element.
+.appendChild(node);
+.removeChild(node);
+
+// v_elemento||document.element.
+.children // children elements
+.firstElementChild // first children elem.
+.lastElementChild // last children elem.
+
+//
+// crear el elemento
+var newelement = document.createElement(tipo); 
+
+// crear el nodo de texto
+var newcontent = document.createTextNode(content); 
+
+// insertar el nodo de texto en el elemento
+newelement.appendChild(newcontent);   
+
+// establecer la clase del elemento
+newelement.classList.add(clase);
+
+// añadir el elemento a su elemento padre
+document.body.appendChild(newelement);
+
+//
+//seleccionar elemento
+var elemento = document.getElementById("t");
+
+//listener
+elemento.addEventListener(<tipo_evento>, <sentencia||funcion>, false);
+
+
+//tipos eventos
+mouseover
+submit
+success
+scroll
+reset
+mouseenter // sin hijos
+mouseleave // sin hijos
+mouseover // con hijos
+mouseout // con hijos
+mousedown // presiona el botón del ratón en un elemento.
+load
+invalid // A submittable element has been checked and doesn't satisfy its constraints.
+focus
+blur // elemento poerde foco
+dblclick
+click
+
+
+// Create a class attribute:
+var atributo = document.createAttribute("class");
+
+// Set the value of the class attribute:
+atributo.value = "democlass";
+
+// Add the class attribute to the first h1:
+var h1 = document.getElementsByTagName("H1")[0];
+h1.setAttributeNode(att);

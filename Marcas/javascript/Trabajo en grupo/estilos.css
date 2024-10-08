@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
+* {
+    background-color: pink;
+}
+
+
+#Titulo {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color: blue;
+}
+
+#Sub {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color: white;
+}
+
+#Texto {
+    text-align: center;
+}

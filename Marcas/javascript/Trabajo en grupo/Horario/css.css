@@ -1,0 +1,68 @@
+* {
+    background-color:lightblue;
+}
+
+h1, h4 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    background-color: white;
+    
+
+}
+
+
+.tg  {
+    border-collapse:collapse;
+    border-spacing:5px;
+    margin: 0 auto;
+    border-style: outset;
+    border-width: 15px;
+    border-color: white;
+    border-collapse: separate;
+}
+.tg td{
+    border-style: none;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    padding:20px;
+    text-align: center;
+
+}
+
+.tg th{
+    background-color: white;
+    border-bottom-style: outset;
+    border-color: grey;
+    border-width:2px;
+    padding: 20px;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+}
+
+.tg .horas {
+    background-color: white;
+    text-align: center;
+    margin: 30px;
+}
+
+.tg .recreo {
+    background-color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+.tg .tg-8fiv{
+    font-weight:bold;
+    text-align:left;
+    vertical-align:top
+}
+
+.tg .tg-pjk6{
+    text-align:center;
+    margin: 20px;
+    background-color: orange;
+}

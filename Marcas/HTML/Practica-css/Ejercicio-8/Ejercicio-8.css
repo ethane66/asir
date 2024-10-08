@@ -1,0 +1,15 @@
+
+.roman {
+    list-style-type: upper-roman;
+    font-weight: bold;
+}
+.decimal{
+    list-style-type:decimal ;
+    
+}
+.decimal ~ ol li{
+    list-style-type: upper-latin;
+}
+.decimal ~ ol li ~ ol li {
+    list-style-type: lower-latin;
+}

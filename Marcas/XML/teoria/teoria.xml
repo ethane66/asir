@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE recetas SYSTEM "ejerplo.dtd">
+<recetas>
+<receta>
+    <!--<nombre>Paella</nombre>
+    <precio>10 euros</precio>-->
+    <ingrediente>arroz</ingrediente>
+    <ingrediente>sepia</ingrediente>
+    <ingrediente>gambas</ingrediente>
+</receta>
+<receta>
+    <!--<nombre>Tortilla</nombre>
+    <precio>6 euros</precio>-->
+    <ingrediente>huevos</ingrediente>
+    <ingrediente>patatas</ingrediente>
+</receta>
+</recetas>

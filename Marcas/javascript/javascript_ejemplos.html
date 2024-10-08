@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //Muy sensible a las mayúsculas
+        //Texto normal en javascript
+        document.write("<br>");
+        document.write("Ejemplos de texto");
+        document.write("<br>");
+        document.write("Hola mundo")
+        //Poner br en javascript
+        document.write("<br>");
+        document.write("Diego Martinez");
+        document.write("<br>");
+        document.write("44");
+        document.write("<br>");
+
+        //variables
+        //Enteros-números sin decimal 
+        //Reales-con decimal 
+        //Cadena de caracteres 'letras'
+        //Lógicos true/false
+
+        var nombre1='Juan';
+        var edad1 = '10';
+        var altura1 = '1.92';
+        var casado1 = false
+        document.write("<br>");
+        document.write("Variables ejemplos");
+        document.write("<br>");
+        document.write(nombre1);
+        document.write("<br>");
+        document.write(edad1);
+        document.write("<br>");
+        document.write(altura1);
+        document.write("<br>");
+        document.write(casado1);
+        document.write("<br>");
+
+        //Entrada de datos
+        document.write("<br>");
+        var nombre2;
+        var edad2;
+        nombre2 = prompt("Dime tu nombre","Nombre");
+        edad2 = prompt("Dime tu edad");
+        document.write("Hola ");
+        document.write(nombre2);
+        document.write(", tienes ");
+        document.write(edad2);
+        document.write(" años");
+
+        //ejemplo entrada datos
+        //var nombre3 = prompt('Introduzca un nombre:','') ;
+        
+        var valor1, valor2;
+        valor1 = prompt('Ingrese primer número')
+        valor2 = prompt('Ingrese segundo número')
+        var concatena = valor1 + valor2;
+        var suma = parseInt(valor1) + parseInt(valor2);
+        valor1 = parseInt(valor1);
+        valor2 = parseInt(valor2);
+        //var producto = parseInt(valor1) * parseInt(valor2);
+        var producto = valor1 * valor2;
+        document.write('La concatenación es ');
+        document.write(concatena);
+        document.write('<br>');
+        document.write('La suma es ');
+        document.write(suma);
+        document.write('<br>');
+        document.write('El producto es ');
+        document.write(producto);
+
+    </script>
+</body>
+</html>
+

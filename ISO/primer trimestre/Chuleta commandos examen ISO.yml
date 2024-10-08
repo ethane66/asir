@@ -1,0 +1,19 @@
+Chuleta commandos examen ISO
+
+-----------
+---Linux---
+-----------
+-Comprimir archivos 
+    -tar -czvf nombre.tar.gz fichero1 fichero2 fichero3
+
+-Descomprimir achivos
+  -tar -xzvf nombre.tar.gz
+
+-grep -w palabra fichero.txt
+
+-diff ruta/fichero1 ruta/fichero 2     compara 2 ficheros
+
+
+-------------
+---Windows---
+-------------

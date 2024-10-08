@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Trabaja con nosotros</title>
+</head>
+	<body>
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<title>
+					Trabaja con nosotros
+				</title>
+				<meta charset="utf-8">
+				<link rel="stylesheet" href="trabaja.css"/>
+				
+			</head>
+			<body>
+				
+				<div class="angry-grid"><!--El grid layout-->
+					<div id="item-0"><!--El contenido de header-->
+						<img class="imgagenizq" src="../fotos/logo.png" alt="logo">
+						<h1 class="titulo1">Trabaja con nosotros</h1>
+						
+					</div>
+		
+		
+					<div id="item-1"><!--El contenido de nav-->
+						<ul>
+							<li><a href="../index.html">Inicio</a></li>
+							<li><a href="../sobre-nosotros/nosotros.html">Sobre nosotros</a></li>
+							<li><a href="trabaja.html">Trabaja con nosotros</a></li>
+							<li class="dropdown">
+							  <a href="&nbsp" class="dropbtn">Nuestras fiestas</a>
+							  <div class="dropdown-content">
+								<a href="../pagina fiestas/150.html">150</a>
+								<a href="../pagina fiestas/code.html">Code</a>
+								<a href="../pagina fiestas/University.html">University party</a>
+								<a href="../pagina fiestas/resistencia.html">La resistencia</a>
+							  </div>
+							</li>
+							<li><input type="text" placeholder="buscar.." id="buscar"></li>
+						  </ul> 
+					</div>
+		
+					<div id="item-2"><!--El contenido de main-->
+						<article>
+							<p>
+								Rellena este mini formulario para <br> la posibilidad  de trabajar con nosotros!!
+								<form target="_blank" name="trabaja" action="mailto:direccion@miformulario.com" method="post"></br>
+									<input name="nombre" size="10" maxlength="30" placeholder="nombre" required></br></br>
+									<input name="apellidos" size="10" maxlength="30" placeholder="apellidos" required></br></br>
+									<input type="email" placeholder="correo" required></br></br>
+									fecha de nacimiento<input type="date"></br></br>
+									Adjunta tu CV <input type="file"></br></br>
+									Como nos has conocido</br></br>
+									
+									<input type="radio" name="conocer">Redes sociales</br>
+									<input type="radio" name="conocer">Pagina web</br>
+									<input type="radio" name="conocer" >En nuestra discoteca</br></br>
+									En que departamento quieres trabajar?<br>
+									<select name="donde" id="donde">
+										<option value="null" disabled selected>Seleciona una</option>
+										<option value="camarero">Camarero</option>
+										<option value="bar">Bar</option>
+										<option value="DJ">DJ</option>
+										<option value="lys">Luz y sonido</option>
+										<option value="RRPP">Relaciones publicas</option>
+										<option value="Marketing">Marketing y redes sociales</option>
+									</select><br><br>
+									<input type="reset">
+									<input type="submit" value="send">
+									
+								</form>
+							</p>
+						</article>
+					</div>
+		
+					<div id="item-3"> <!--El contenido de footer-->
+						<p>Siguenos en nuestras redes sociales</p>
+                
+						<a href="https://www.instagram.com/fabrikmadrid/"><img src="../fotos/Instagram2.png" alt="insta" width="30px" height="30px"></a>
+						<a href="https://es-es.facebook.com/fabrikmadrid/"><img src="../fotos/Facebook2.png" alt="facebook" width="30px" height="30px"></a> 
+					</div>
+
+					<div id="item-4"> <!--El contenido de aside-->
+						<p>
+							Registrarse <br>
+							Quieres crear una cuenta socio?<br>
+							<form target="_blank" name="cuenta" action="mailto:direccion@miformulario.com" method="post">		
+										<input name="nombre" size="10" maxlength="30" placeholder="nombre" required></br>
+										<input name="apellidos" size="10" maxlength="30" placeholder="apellidos" required></br>
+										<input type="email" placeholder="correo" required></br>
+										<form action="/action_page.php">
+										<input type="text" id="usrname" name="usrname" required placeholder="Usuario"><br>
+										<input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 o más caracteres" required placeholder="Contraseña"><br>
+										
+
+										Accepto los terminos y condiciones de uso<input type="checkbox" required><br>
+										<input type="reset">
+										<input type="submit" value="send">
+
+									</select>
+							</form>
+						</p>
+					</div>
+				  
+		</html>
+		
+	</body>
+</html>

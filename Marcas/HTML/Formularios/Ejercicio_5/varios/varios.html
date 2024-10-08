@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Seccion varios
+        </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../Ejercicio_5.css"/>
+    </head>
+    <body>
+        <fieldset> <legend>Sondeo variado</legend>
+        <p>Ante la posibilidad de ralizar un viaje si se alcanzan los objetivos propuestos para el trimestre ¿que destino prefieres?</p>
+        <form name="varios" method="post">
+        
+            Destino:
+            <select name="Destino"><br>
+                <option value="Atenas">Atenas</option>
+                <option value="Dublin">Dublin</option>
+                <option value="Estambul">Estambul</option>
+                <option value="Lisboa">Lisboa</option>
+                <option value="Londres">Londres</option>
+            </select> <br><br><br>
+            Entre las opciones de transporte posibles, seleciona TODAS las que te serian validas<br><br>
+            <select name="transporte" multiple style="width:100px"><br>
+                <option value="Avion">Avion</option>
+                <option value="Tren">Tren</option>
+                <option value="Barco">Barco</option>
+            </select><br><br>
+        </form>
+        <p>Segun los objetivos alcanzados, haremos diferentes equipos que se identificaran por colores ¿ cual te gustaria que fuera el del equipo al que pertenecieras?</p>
+        Color de equipo<input type="color"><br><br>
+        Ante la busqueda de alojamiento, indique sus preferencia<br><br>
+        <table>
+            <tr>
+            <th></th><th>Propio</th><th>Alquilado</th>
+            </tr>
+            <tr>
+                <td>Apartamento</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Piso</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Adosado</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>chalet</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+
+        </table>
+    </fieldset>
+    </body>
+</html>

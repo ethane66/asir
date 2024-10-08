@@ -1,0 +1,474 @@
+Lenguaje también conocido como XSD (XML Schema Definition).
+Su objetivo es describir la estructura de un documento XML:
+◦ Elementos y atributos que pueden aparecer.
+◦ Número y orden de los elementos hijo.
+◦ Tipos de datos de los elementos y atributos.
+◦ Valores por defecto y fijos para cada elemento y atributo.
+
+Ventajas
+Soporta tipos de datos por lo tanto es más sencillo:
+◦ Describir los elementos que puede contener el archivo.
+◦ Validar los datos.
+◦ Definir restricciones.
+◦ Definir patrones y formatos de datos.
+◦ Convertir datos entre diferentes tipos.
+Usa sintaxis XML, por lo tanto:
+◦ Se pueden usar editores y parsers XML para trabajar con el.
+◦ Se puede trabajar sobre el esquema con el DOM XML.
+◦ Se puede transformar el esquema con XSLT.
+Los esquemas XML son extensibles puesto que están escritos en XML, por lo tanto:
+◦ Es posible reutilizar esquemas.
+◦ Crear nuestros propios tipos de datos a partir de tipos estándar.
+◦ Hacer referencia a múltiples esquemas en el mismo documento.
+Comunicaciones seguras.
+◦ XML esquema permite al emisor describir cómo son los datos que va a recibir. Por ejemplo si enviamos
+a un receptor una fecha como 04-11-2018 puede interpretarse como:
+◦ 4 de noviembre
+◦ 11 de abril
+Dependiendo del país en el que nos encontremos. Sin embargo si tenemos un documento XML con un
+elemento como:
+<fecha type=“date”>2018-11-04</fecha>
+Estaremos asegurando el entendimiento ya que el tipo de datos “date” exige ajustarse al formato “YYYYMM-DD” (año, mes, día).
+
+
+
+Vinculando archivos XML y XSD:
+XML
+<raiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="esquemaAsociado.xsd">
+<!-- ... --> </raiz>
+XSD
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="raiz">
+<!-- ... -->
+
+
+
+Un elemento simple contiene solo texto, no puede contener otros elementos o atributos.
+Definición:
+<xs:element name="xxx" type="yyy" default="yyy“ fixed="yyy" >
+
+name es el nombre del elemento y type el tipo de datos al que se corresponde, default y fixed son opcionales, default representan el valor por defecto que se asigna al elemento
+cuando no recibe ningún valor y fixed indica un valor automático que se asigna al elemento y que no
+permite especificar otro.
+Entre los tipos de datos más comunes encontramos:
+
+| Tipo de dato | Descripción                                                        |
+|--------------|--------------------------------------------------------------------|
+| xs:string    | Se refiere a una cadena de caracteres, como texto o palabras.      |
+| xs:decimal   | Se utiliza para números decimales, como por ejemplo 3.14.          |
+| xs:integer   | Se utiliza para números enteros, como 42.                          |
+| xs:boolean   | Representa un valor booleano, es decir, verdadero o falso.         |
+| xs:date      | Se utiliza para representar una fecha, como por ejemplo 2023-05-03 |
+| xs:time      | Se utiliza para representar una hora, como por ejemplo 10:30:00    |
+
+
+Los atributos se declaran siempre como tipos simples.
+Definición:
+<xs:attribute name="xxx" type="yyy" default="yyy“ fixed="yyy" use=“required" >
+
+name es el nombre del atributo y type el tipo de datos al que pertenece.
+
+default y fixed son opcionales, default representan el valor por defecto que se asigna al elemento cuando no recibe
+ningún valor y fixed indica un valor automático que se asigna al elemento y que no permite especificar otro.
+Los atributos son opcionales. Para indicar que es obligatorio se debe especificar mediante use=“required"
+
+RESTRICCIONES
+
+Las restricciones (o facetas) permiten definir el rango de valores aceptable para elementos o
+atributos XML. 
+
+| Restricción / Tipo | Descripción                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <xs:minLength>     | Establece la longitud mínima de una cadena de caracteres.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <xs:maxLength>     | Establece la longitud máxima de una cadena de caracteres.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <xs:length>+       | Establece la longitud exacta de una cadena de caracteres.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <xs:pattern>       | Define una expresión regular que debe cumplirse para que un elemento sea válido.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| <xs:minInclusive>  | Define el valor mínimo de un tipo de dato numérico o de fecha.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| <xs:maxInclusive>  | Define el valor máximo de un tipo de dato numérico o de fecha.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| <xs:totalDigits>   | Limita la cantidad total de dígitos que pueden tener un número decimal o entero.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| <xs:fractionDigits>| Limita la cantidad de dígitos fraccionarios que pueden tener un número decimal.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| <xs:enumeration>   | Define una lista de valores permitidos para un elemento.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+
+
+# Restricción de longitud mínima:
+
+<xs:element name="nombre">
+   <xs:simpleType>
+      <xs:restriction base="xs:string">
+         <xs:minLength value="3"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:element>
+
+En este ejemplo, se establece una restricción en el elemento "nombre" para que tenga una longitud mínima de 3 caracteres. 
+Si el valor del elemento es menor a 3 caracteres, el documento XML no será válido.
+
+# Restricción de valores permitidos:
+
+<xs:element name="edad">
+   <xs:simpleType>
+      <xs:restriction base="xs:integer">
+         <xs:minInclusive value="0"/>
+         <xs:maxInclusive value="120"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:element>
+
+En este ejemplo, se establece una restricción en el elemento "edad" para que solo permita valores enteros entre 0 y 120. 
+Si el valor del elemento está fuera de este rango, el documento XML no será válido.
+
+Restricción de expresión regular:
+
+<xs:element name="correo">
+   <xs:simpleType>
+      <xs:restriction base="xs:string">
+         <xs:pattern value="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:element>
+
+
+En este ejemplo, se establece una restricción en el elemento "correo" para que tenga el formato de una dirección de correo electrónico válida. 
+Si el valor del elemento no cumple con la expresión regular especificada, el documento XML no será válido.
+
+VALORES QUE PUEDEN PONER EN EL XS:PATTERN:
+
+Carácter	Descripción
+    .	         Representa cualquier carácter
+    []	         Representa un conjunto de caracteres
+    [^]	         Representa un conjunto de caracteres que NO se permiten
+    *	         Representa cero o más ocurrencias del carácter o conjunto anterior
+    +	         Representa una o más ocurrencias del carácter o conjunto anterior
+    ?	         Representa cero o una ocurrencia del carácter o conjunto anterior
+    ()	         Agrupa los caracteres en una subexpresión
+    \	         Escapa un carácter especial para que sea interpretado como un carácter literal
+    ^	         Representa el inicio de la cadena
+    $	         Representa el final de la cadena
+    \d	         Representa cualquier dígito. Es equivalente a [0-9].
+    \D	         Representa cualquier carácter que no sea un dígito. Es equivalente a [^0-9].
+    \s	         Representa cualquier espacio en blanco. Es equivalente a [\t\n\r\f].
+    \S	         Representa cualquier carácter que no sea un espacio en blanco. Es equivalente a [^\t\n\r\f].
+    \w	         Representa cualquier carácter alfanumérico. Es equivalente a [a-zA-Z0-9_].
+    \W	         Representa cualquier carácter que no sea alfanumérico. Es equivalente a [^a-zA-Z0-9_].
+    {}	         Indica un rango de ocurrencias permitido. Por ejemplo, {2,5} indica que se permiten entre 2 y 5 ocurrencias del carácter o conjunto anterior.
+    ?	         Hace que un cuantificador sea "no codicioso", lo que significa que coincidirá con la menor cantidad de caracteres posibles. 
+                    Por ejemplo, a.+?b coincidirá con aab en la cadena aabab, en lugar de coincidir con la cadena completa aabab.
+    (?=)	     Indica una afirmación positiva. Por ejemplo, (?=.*[A-Z]) significa "la cadena debe contener al menos una letra mayúscula".
+    (?!)	     Indica una afirmación negativa. Por ejemplo, (?!.*[A-Z]) significa "la cadena no debe contener ninguna letra mayúscula".
+
+
+# ELEMENTOS COMPLEJOS
+
+    Un elemento complejo contiene otros elementos y/o atributos.
+
+--Elementos vacíos: Son elementos que no contienen ningún contenido.
+Estos elementos se utilizan generalmente para indicar la presencia o ausencia de ciertos atributos. 
+Ejemplo:
+  <xs:element name="coche">
+    <xs:complexType>
+      <xs:attribute name="matrícula" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+Su correspondiente XML sería simplemente:
+
+<coche matrícula="1345HVF"/>
+
+
+--Elementos que contienen otros elementos: Son elementos que contienen uno o más elementos anidados. 
+Estos elementos se representan en XSD como elementos complejos con una secuencia de elementos anidados en su interior. 
+Ejemplo:
+<xs:element name="persona">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="edad" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+Su correspondiente XML sería:
+
+
+<persona>
+  <nombre>Juan</nombre>
+  <edad>25</edad>
+</persona>
+
+
+--Elementos que contienen solo texto: 
+Son elementos que contienen solo texto y se representan en XSD como elementos con el atributo type de valor xs:string. 
+Ejemplo:
+<xs:element name="mensaje" type="xs:string"/>
+
+Su correspondiente XML sería:
+
+<mensaje>Hola, ¿cómo estás?</mensaje>
+
+
+--Elementos que contienen otros elementos y texto: Son elementos que contienen tanto elementos anidados como texto en su interior.
+ Estos elementos se representan en XSD como elementos complejos con una secuencia de elementos anidados y un atributo mixed="true" en su interior. 
+ Ejemplo:
+<xs:element name="saludo">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="mensaje" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+Su correspondiente XML sería:
+
+<saludo>
+  <nombre>Juan</nombre>
+  <mensaje>Hola, ¿cómo estás?</mensaje>
+</saludo>
+
+
+# INDICADORES XSD
+    Nos permiten controlar cómo se utilizan los elementos dentro de los documentos XML.
+
+--Elementos de orden:
+        ◦ All.      Los elementos hijos pueden aparecer en cualquier orden. Cada elemento solo puede aparecer una vez.
+        ◦ Choice.   Solamente puede aparecer uno de los elementos hijos.
+        ◦ Sequence. Los elementos hijos deben aparecer en el orden especificado.
+
+--Indicadores de ocurrencias.
+        ◦ Nos permiten indicar el número de veces que puede aparecer en elemento.
+        ◦ El número máximo se especifica con maxOccurs
+        ◦ El número mínimo se especifica con minOccurs
+        ◦ Para indicar que no hay límite se usa la palabra unbounded
+
+    Ejemplo:
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">                                   |
+  <xs:element name="coches">                                                              | <coches>
+    <xs:complexType>                                                                      |     <coche matricula="1234ABC"/>
+      <xs:sequence>                                                                       |     <coche matricula="5678DEF"/>
+        <xs:element name="coche" maxOccurs="unbounded">                                   |     <coche matricula="9012GHI"/>
+          <xs:complexType>                                                                | </coches>
+            <xs:attribute name="matricula" type="xs:string" use="required"/>              |
+          </xs:complexType>                                                               |
+        </xs:element>                                                                     |
+      </xs:sequence>                                                                      |
+    </xs:complexType>                                                                     |
+  </xs:element>                                                                           |
+</xs:schema>                                                                              |
+
+###############################################TIPO DE DATOS#########################################################
+                 
+
+| Categoría      | Tipo de dato          | Ejemplo                |   Descripcion
+|----------------|-----------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------
+| Numéricos      | xs:byte               | 100                    | Entero de 8 bits con signo
+|                | xs:short              | 1000                   | Entero de 16 bits con signo
+|                | xs:int                | 100000                 | Entero de 32 bits con signo
+|                | xs:long               | 100000000000           | Entero de 64 bits con signo
+|                | xs:unsignedByte       | 255                    | Entero de 8 bits sin signo
+|                | xs:unsignedShort      | 65535                  | Entero de 16 bits sin signo
+|                | xs:unsignedInt        | 4294967295             | Entero de 32 bits sin signo
+|                | xs:unsignedLong       | 18446744073709551615   | Entero de 64 bits sin signo
+|                | xs:decimal            | 3.141592653589793238   | Número decimal de precisión arbitraria
+|                | xs:float              | 3.14E+2                | Número de coma flotante de precisión simple
+|                | xs:double             | 3.14E+100              | Número de coma flotante de precisión doble
+|                | xs:positiveInteger    | 1234                   | Entero positivo de precisión arbitraria
+|                | xs:negativeInteger    | -1234                  | Entero negativo de precisión arbitraria
+|                | xs:nonPositiveInteger | -1234                  | Entero no positivo de precisión arbitraria
+|                | xs:nonNegativeInteger | 1234                   | Entero no negativo de precisión arbitraria
+|                | xs:integer            | 1234                   | Entero de precisión arbitraria
+|----------------|-----------------------|------------------------|-------------------------------------------------------------------------------------------------------------------------
+| De fecha y hora| xs:date               | 2023-05-03             | Fecha con formato YYYY-MM-DD
+|                | xs:time               | 13:30:00               | Hora con formato hh:mm:ss
+|                | xs:dateTime           | 2023-05-03T13:30:00    | Fecha y hora con formato YYYY-MM-DDThh:mm:ss
+|                | xs:gYearMonth         | 2023-05                | Año y mes con formato YYYY-MM
+|                | xs:gYear              | 2023                   | Año con formato YYYY
+|                | xs:gMonthDay          | --05-03                | Mes y día con formato --MM-DD
+|                | xs:gDay               | ---03                  | Día con formato ---DD
+|                | xs:gMonth             | --05                   | Mes con formato --MM
+|                | xs:duration           | P3Y6M4DT12H30M5S       | Un período de tiempo, especificado en años, meses, días, horas, minutos y segundos
+|----------------|-----------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------
+| De texto       | xs:string             | Hello World            | Cadena de caracteres de longitud arbitraria
+|                | xs:normalizedString   | Hello World            | Cadena de caracteres sin espacios en blanco iniciales o finales
+|                | xs:token              | Hello                  | Cadena de caracteres sin espacios en blanco iniciales o finales, y sin múltiples espacios en blanco consecutivos
+|                | xs:language           | en-US                  | Código de idioma ISO 639-1
+|                | xs:NMTOKEN            | Hello123               | Cadena de caracteres que cumple con las reglas de un nombre de token
+|                | xs:Name               | elementName            | Cadena de caracteres que cumple con las reglas de un nombre XML
+|                | xs:NCName             | namespaceName          | Cadena de caracteres que cumple con las reglas de un nombre XML sin prefijo de espacio de nombres
+|                | xs:ID                 | id001                  | Identificador único
+|                | xs:IDREF              | id001                  | Referencia a un identificador único de un elemento XML
+|                | xs:ENTITY             | entity001              | Referencia a una entidad externa declarada en el documento XML
+|                | xs:QName              | xs:string              | Nombre calificado que consta de un prefijo y un nombre local
+|                | xs:NOTATION           | video                  | Nombre de una notación
+|                | xs:anyURI             | http://www.example.com | Una URI (Identificador uniforme de recursos)
+|----------------|-----------------------|------------------------|---------------------------------------------------------------------------------------------------------------------------
+| Binarios       | xs:hexBinary          | 0FAB                   | Una secuencia de bytes codificada en hexadecimal
+|                | xs:base64Binary       | MTIzNDU2Nzg5MA==       | Una secuencia de bytes codificada en base64
+|----------------|-----------------------|------------------------|---------------------------------------------------------------------------------------------------------------------------
+| Booleanos      | xs:boolean            | true or false          | Valor booleano "verdadero" o "falso
+|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------               
+
+
+'simpleContent' se utiliza para extender un elemento complejo que solo contiene texto, es decir, que no tiene elementos hijos, y se quiere añadir restricciones o atributos adicionales. 
+Por ejemplo, supongamos que tenemos el elemento precio que solo contiene un valor numérico, pero queremos agregar una restricción que indique que el valor debe ser mayor a cero.
+En este caso, podemos utilizar simpleContent para definir la restricción adicional.
+
+Ejemplo:
+
+<xs:element name="precio">
+  <xs:complexType>
+    <xs:simpleContent>
+      <xs:restriction base="xs:float">
+        <xs:minInclusive value="0"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:element>
+
+Por otro lado, 'complexContent' se utiliza para extender un elemento complejo que ya contiene elementos hijos, es decir, que ya tiene una estructura definida.
+ Se utiliza para agregar elementos hijos adicionales o para modificar la estructura existente.
+
+Ejemplo:
+
+<xs:element name="persona">
+  <xs:complexType>
+    <xs:complexContent>
+      <xs:extension base="xs:anyType">
+        <xs:sequence>
+          <xs:element name="nombre" type="xs:string"/>
+          <xs:element name="apellido" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:integer"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:element>
+
+En este ejemplo, estamos definiendo el elemento persona que tiene dos elementos hijos (nombre y apellido) y un atributo (id).
+En este caso, utilizamos complexContent para extender la definición del elemento xs:anyType, que es un tipo de datos predefinido en XSD,
+para agregar la estructura deseada.
+
+En resumen, simpleContent se utiliza para agregar restricciones o atributos adicionales a un elemento complejo que solo contiene contenido textual,
+mientras que complexContent se utiliza para modificar o agregar elementos hijos a un elemento complejo que ya tiene una estructura definida.
+
+
+
+# KEY y KEYREF
+
+El elemento key se utiliza para definir una clave única para un elemento o conjunto de elementos en un documento XML.
+ Una clave es una identificación única de un elemento o conjunto de elementos. 
+ Por lo tanto, una clave puede ser utilizada para identificar un elemento en particular en un documento XML.
+  El elemento key se define en el esquema XML con la sintaxis:
+
+<xs:key name="nombre_de_la_clave" refer="selector">
+  <xs:selector xpath="selector_xpath"/>
+  <xs:field xpath="campo_xpath"/>
+</xs:key>
+Donde:
+
+El elemento keyref se utiliza para hacer referencia a una clave única definida en un documento XML. Esto se hace para garantizar que los valores de un elemento en particular coincidan con los valores de la clave definida. El elemento keyref se define en el esquema XML con la sintaxis:
+
+<xs:keyref name="nombre_de_la_referencia" refer="nombre_de_la_clave_referenciada">
+  <xs:selector xpath="selector_xpath"/>
+  <xs:field xpath="campo_xpath"/>
+</xs:keyref>
+Donde:
+
+name: Es el nombre de la referencia definida.
+refer: Es el nombre de la clave única que se referencia.
+selector: Es una expresión XPath que selecciona los elementos en los que se aplicará la restricción.
+field: Es una expresión XPath que selecciona el campo o los campos que deben coincidir con los valores de la clave única referenciada.
+
+A continuación, se muestra un ejemplo que ilustra cómo se pueden utilizar los elementos key y keyref en un esquema XML.
+En este ejemplo, se definen dos tipos de elementos, Libro y Autor, y se utiliza una clave única para garantizar que cada Autor tenga un identificador único.
+A continuación, se define una referencia a esta clave única en el elemento Libro, para garantizar que el Autor de cada libro exista y tenga un identificador único.
+
+
+<xs:element name="Libro">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="Titulo" type="xs:string"/>
+      <xs:element name="Autor" type="xs:string"/>
+    </xs:sequence>
+    <xs:keyref name="AutorIdRef" refer="AutorId">
+      <xs:selector xpath="Autor"/>
+      <xs:field xpath="@id"/>
+    </xs:keyref>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="Autor">
+  <xs:complexType>
+    <xs:attribute name="id" type="xs:ID"/>
+    <xs:attribute name="Nombre" type="xs:string"/>
+    <xs:key name="AutorId">
+      <xs:selector xpath="."/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+  </xs:complexType>
+</xs:element>
+
+# INDICADORES DE GRUPO
+
+Supongamos que tenemos un archivo XML que describe los datos de un libro, y queremos agrupar los elementos relacionados con la información del autor en un grupo:
+
+php
+Copy code
+<xs:group name="autor">
+  <xs:sequence>
+    <xs:element name="nombre" type="xs:string"/>
+    <xs:element name="apellido" type="xs:string"/>
+    <xs:element name="email" type="xs:string"/>
+  </xs:sequence>
+</xs:group>
+
+<xs:element name="libro">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="titulo" type="xs:string"/>
+      <xs:element ref="autor"/>
+      <xs:element name="editorial" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+En este ejemplo, creamos un grupo llamado "autor" que contiene un conjunto de elementos relacionados con la información del autor del libro (nombre, apellido y email).
+Luego, en la declaración del elemento "libro", referenciamos el grupo "autor" utilizando la etiqueta <xs:element ref="autor"/>, 
+lo que nos permite incluir fácilmente los elementos relacionados con la información del autor en cualquier otro elemento que represente un libro.
+
+Ejemplo de grupo de atributos:
+
+Supongamos que queremos definir un conjunto de atributos que puedan ser utilizados en varios elementos de nuestro archivo XML,
+como por ejemplo, los atributos "id" y "tipo". Para ello, podemos crear un grupo de atributos y referenciarlo en los elementos que lo requieran:
+
+<xs:attributeGroup name="identificador">
+  <xs:attribute name="id" type="xs:string" use="required"/>
+  <xs:attribute name="tipo" type="xs:string" use="optional"/>
+</xs:attributeGroup>
+
+<xs:element name="producto">
+  <xs:complexType>
+    <xs:attributeGroup ref="identificador"/>
+    <xs:attribute name="nombre" type="xs:string" use="required"/>
+    <xs:attribute name="precio" type="xs:decimal" use="required"/>
+  </xs:complexType>
+</xs:element>
+
+En este ejemplo, creamos un grupo de atributos llamado "identificador" que contiene dos atributos, "id" y "tipo".
+Luego, en la declaración del elemento "producto", referenciamos el grupo de atributos utilizando la etiqueta <xs:attributeGroup ref="identificador"/>, 
+lo que nos permite incluir fácilmente los atributos "id" y "tipo" en cualquier otro elemento que lo requiera.
+
+
+# UNION
+
+una unión es un tipo de datos definido como una combinación de dos o más tipos de datos existentes.
+Para definir una unión en XSD, se utiliza la etiqueta xs:union y se especifican los tipos de datos a combinar mediante la propiedad memberTypes.
+A continuación, se muestra un ejemplo de cómo se define una unión en XSD:
+
+<xs:simpleType name="UnionType">
+  <xs:union memberTypes="xs:int xs:string xs:boolean"/>
+</xs:simpleType>
+
+En este ejemplo, se ha definido un nuevo tipo de datos llamado UnionType que es una unión de tres tipos diferentes: int, string y boolean. 
+Cualquier elemento que se defina utilizando este tipo podrá contener cualquier valor que sea válido para uno de los tres tipos mencionados.

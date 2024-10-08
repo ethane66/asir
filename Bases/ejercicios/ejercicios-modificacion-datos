@@ -1,0 +1,27 @@
+--------------------Ejercicios x vero-----------------
+ --Los teléfonos de estudiantes y profesores se amplían para incluir el prefijo --internacional, de 15 a 20 caracteres. El prefijo de todos los --teléfonos conocidos es '+1' (Estados Unidos).
+
+ select * from student;
+
+ uptade student set phone='desconocido' where phone is null;
+
+ alter table student modify phone varchar(20);
+ update student set phone='+1' || phone where phone is not null;
+
+ ''= null
+
+--Pasar grade_type a español
+
+select * from grade_type
+update grade_type set description= case description 
+    when ' Final' then 'Final'
+    when 'Homework' then 'Deberes'
+    when 'Midterm' then 'Parcial'
+    when 'Participation' then 'Participación'
+    when 'Proyect' then 'Proyecto'
+    when 'Quiz' then 'Cuestionario'
+    else 'No se'
+end;
+
+--Se puede cambiar por : case when description=... --Para ser más específico
+
